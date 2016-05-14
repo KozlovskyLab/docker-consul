@@ -3,6 +3,7 @@ MAINTAINER Vladimir Kozlovski <inbox@vladkozlovski.com>
 
 ENV CONSUL_VERSION 0.5.2
 ENV CONSUL_SHA256 171cf4074bfca3b1e46112105738985783f19c47f4408377241b868affa9d445
+ENV CONSUL_WEBUI_SHA256 ad883aa52e1c0136ab1492bbcedad1210235f26d59719fb6de3ef6464f1ff3b1
 
 RUN apk --update add curl ca-certificates && \
     curl -Ls https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk && \
@@ -19,7 +20,12 @@ RUN echo "${CONSUL_SHA256}  /tmp/consul.zip" > /tmp/consul.sha256 && \
 
 ADD ./config /config/
 ADD https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip /tmp/webui.zip
-RUN cd /tmp && unzip webui.zip && mv dist /ui && rm webui.zip
+RUN echo "${CONSUL_WEBUI_SHA256}  /tmp/webui.zip" > /tmp/webui.sha256 && \
+    sha256sum -c /tmp/webui.sha256 && \
+    cd /tmp && \
+    unzip webui.zip && \
+    mv dist /ui && \
+    rm webui.zip
 
 EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8600 8600/udp
 ENV DNS_RESOLVES consul
