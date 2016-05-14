@@ -4,8 +4,8 @@ Dockerizing Consul
 
 :Author: Vladimir Kozlovski
 :Contact: inbox@vladkozlovski.com
-:Issues: https://github.com/vkozlovski/docker-consul/issues
-:Docker image: https://hub.docker.com/r/vkozlovski/consul/
+:Issues: https://github.com/kozlovskistudio/docker-consul/issues
+:Docker image: https://hub.docker.com/r/kozlovskistudio/consul/
 :Description: Dockerfile to build a Consul container image.
 
 :Release notes: https://releases.hashicorp.com/consul/

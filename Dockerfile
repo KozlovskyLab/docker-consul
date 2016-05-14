@@ -9,7 +9,7 @@ RUN apk --update add curl ca-certificates && \
     apk add --allow-untrusted /tmp/glibc-2.21-r2.apk && \
     rm -rf /tmp/glibc-2.21-r2.apk /var/cache/apk/*
 
-ADD https://dl.bintray.com/mitchellh/consul/${CONSUL_VERSION}_linux_amd64.zip /tmp/consul.zip
+ADD https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip /tmp/consul.zip
 RUN echo "${CONSUL_SHA256}  /tmp/consul.zip" > /tmp/consul.sha256 && \
     sha256sum -c /tmp/consul.sha256 && \
     cd /bin && \
@@ -18,7 +18,7 @@ RUN echo "${CONSUL_SHA256}  /tmp/consul.zip" > /tmp/consul.sha256 && \
     rm /tmp/consul.zip
 
 ADD ./config /config/
-ADD https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip /tmp/webui.zip
+ADD https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip /tmp/webui.zip
 RUN cd /tmp && unzip webui.zip && mv dist /ui && rm webui.zip
 
 EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8600 8600/udp
