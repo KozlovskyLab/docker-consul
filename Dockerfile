@@ -6,9 +6,7 @@ ENV CONSUL_SHA256 5dbfc555352bded8a39c7a8bf28b5d7cf47dec493bc0496e21603c84dfe41b
 ENV CONSUL_WEBUI_SHA256 1b793c60e1af24cc470421d0411e13748f451b51d8a6ed5fcabc8d00bfb84264
 
 RUN apk --update add curl ca-certificates && \
-    #curl -Ls https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk && \
-    #apk add --allow-untrusted /tmp/glibc-2.21-r2.apk && \
-    rm -rf /tmp/glibc-2.21-r2.apk /var/cache/apk/*
+    rm -rf /var/cache/apk/*
 
 ADD https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip /tmp/consul.zip
 RUN echo "${CONSUL_SHA256}  /tmp/consul.zip" > /tmp/consul.sha256 && \
