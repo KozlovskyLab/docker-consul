@@ -1,9 +1,9 @@
 FROM alpine:latest
 MAINTAINER Vladimir Kozlovski <inbox@vladkozlovski.com>
 
-ENV CONSUL_VERSION 0.7.0
-ENV CONSUL_SHA256 b350591af10d7d23514ebaa0565638539900cdb3aaa048f077217c4c46653dd8
-ENV CONSUL_WEBUI_SHA256 42212089c228a73a0881a5835079c8df58a4f31b5060a3b4ffd4c2497abe3aa8
+ENV CONSUL_VERSION 0.7.1
+ENV CONSUL_SHA256 5dbfc555352bded8a39c7a8bf28b5d7cf47dec493bc0496e21603c84dfe41b4b
+ENV CONSUL_WEBUI_SHA256 1b793c60e1af24cc470421d0411e13748f451b51d8a6ed5fcabc8d00bfb84264
 
 RUN apk --update add curl ca-certificates && \
     #curl -Ls https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk && \
