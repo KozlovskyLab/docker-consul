@@ -1,13 +1,13 @@
 FROM alpine:latest
 MAINTAINER Vladimir Kozlovski <inbox@vladkozlovski.com>
 
-ENV CONSUL_VERSION 0.6.4
-ENV CONSUL_SHA256 abdf0e1856292468e2c9971420d73b805e93888e006c76324ae39416edcf0627
-ENV CONSUL_WEBUI_SHA256 5f8841b51e0e3e2eb1f1dc66a47310ae42b0448e77df14c83bb49e0e0d5fa4b7
+ENV CONSUL_VERSION 0.7.0
+ENV CONSUL_SHA256 b350591af10d7d23514ebaa0565638539900cdb3aaa048f077217c4c46653dd8
+ENV CONSUL_WEBUI_SHA256 42212089c228a73a0881a5835079c8df58a4f31b5060a3b4ffd4c2497abe3aa8
 
 RUN apk --update add curl ca-certificates && \
-    curl -Ls https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk && \
-    apk add --allow-untrusted /tmp/glibc-2.21-r2.apk && \
+    #curl -Ls https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk && \
+    #apk add --allow-untrusted /tmp/glibc-2.21-r2.apk && \
     rm -rf /tmp/glibc-2.21-r2.apk /var/cache/apk/*
 
 ADD https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip /tmp/consul.zip
